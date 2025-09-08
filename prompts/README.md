@@ -1,6 +1,6 @@
 # AO Portal Implementation Prompts
 
-AO Portalのデザインを再現した、dAppsのフロントエンド基盤を段階的に実装するためのClaude Codeプロンプト集です。
+AO Portalのフロントエンド基盤を段階的に実装するためのClaude Codeプロンプト集
 
 ## 実行順序
 
@@ -34,6 +34,14 @@ AO Portalのデザインを再現した、dAppsのフロントエンド基盤を
 - Shadcn/ui
 - Zustand
 - TanStack Query
+
+## 実装方針
+
+- **Light Modeのみ実装** - Dark Modeは実装しない
+- **状態管理はZustandを使用** - Context APIは使用しない
+- **TailwindCSSでスタイリング** - CSS Modulesやstyled-componentsは使用しない
+- **TypeScriptで型安全性を確保** - 全コンポーネントで適切な型定義
+- **Shadcn/uiとの互換性維持** - 既存のShadcnコンポーネントを拡張
 
 ## 実行方法
 
