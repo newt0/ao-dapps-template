@@ -7,8 +7,8 @@ Please create button components for AO Portal.
 
 **Files to Create**
 
-- src/components/ui/ao-button.tsx
-- src/components/ui/wallet-button.tsx
+- src/components/shared/ao-button.tsx
+- src/components/shared/wallet-button.tsx
 
 **AO Button Specifications**
 variant props: "primary" | "secondary"
