@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+pnpm-lock.yaml
+package-lock.json
+
+# Next.js
+.next
+out
+build
+
+# Production
+dist
+
+# Testing
+coverage
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+
+# Misc
+*.log
