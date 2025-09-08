@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],
+        mono: ['Roboto Mono', 'monospace'],
       },
       colors: {
         'ao-gray-50': 'rgb(247, 247, 247)',
@@ -35,7 +36,62 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: any) {
+      const newUtilities = {
+        '.section-card': {
+          background: 'white',
+          border: '1px solid rgb(240, 240, 240)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '20px',
+          padding: '24.5px 20px 20px',
+          width: '100%',
+        },
+        '.section-compact': {
+          background: 'rgb(247, 247, 247)',
+          padding: '24.5px 20px 20px',
+        },
+        '.text-section-title': {
+          fontSize: '29px',
+          fontWeight: '400',
+          color: 'rgb(21, 21, 21)',
+          fontFamily: '"DM Sans", sans-serif',
+        },
+        '.text-section-title-sm': {
+          fontSize: 'clamp(16px, 1.65vw, 18px)',
+          fontWeight: '500',
+          color: 'rgb(21, 21, 21)',
+          lineHeight: '1',
+          fontFamily: '"DM Sans", sans-serif',
+        },
+        '.text-label': {
+          fontFamily: '"Roboto Mono", monospace',
+          fontWeight: '400',
+          textTransform: 'uppercase',
+          fontSize: 'clamp(13px, 1.35vw, 14px)',
+          color: 'rgb(82, 82, 82)',
+        },
+        '.text-description': {
+          fontSize: '12px',
+          color: 'rgb(107, 107, 107)',
+          fontWeight: '400',
+        },
+        '.text-value': {
+          fontSize: 'clamp(18px, 1.75vw, 24px)',
+        },
+        '.metric-display': {
+          display: 'flex',
+          alignItems: 'center',
+          gap: '7.5px',
+          margin: '1.5px 0 0',
+        },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 };
 
 export default config;
