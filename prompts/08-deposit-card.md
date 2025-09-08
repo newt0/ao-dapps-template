@@ -1,16 +1,16 @@
-Depositカード（DAI等）のコンポーネントを作成してください。
+Please create a deposit card component (for DAI, etc.).
 
-【前提条件】
+**Prerequisites**
 
 - src/components/ui/ao-button.tsx (03-button-components.md)
 - src/components/ui/wallet-button.tsx (03-button-components.md)
 - src/components/ui/metric-item.tsx (04-metric-components.md)
 
-【ファイル作成】
+**File to Create**
 
 - src/components/cards/deposit-card.tsx
 
-【仕様】
+**Specifications**
 Props:
 
 - tokenName: string // "DAI"
@@ -27,38 +27,38 @@ Props:
 - onSwap?: () => void
 - onDeposit?: () => void
 
-【構成】
+**Structure**
 
-1. 上部: トークン名 + APY表示 + ウォレットボタン
-2. Native Yield表示
-3. Amount Deposited表示（アイコン + 数値）
-4. Projection表示（30日・1年）
-5. レート表示（1 DAI = X AO）
-6. 下部: アクションボタン2つ
-   - 左: Swapボタン（primary）
-   - 右: Connect/Depositボタン（secondary）
+1. Top: Token name + APY display + wallet button
+2. Native Yield display
+3. Amount Deposited display (icon + value)
+4. Projection display (30-day, 1-year)
+5. Rate display (1 DAI = X AO)
+6. Bottom: Two action buttons
+   - Left: Swap button (primary)
+   - Right: Connect/Deposit button (secondary)
 
-【状態による表示切替】
+**State-based Display**
 
-- 未接続: "Connect ETH Wallet"
-- 接続済: "Deposit DAI"等の具体的アクション
+- Disconnected: "Connect ETH Wallet"
+- Connected: Specific actions like "Deposit DAI"
 
-白背景のカード、適切なpadding、レスポンシブ対応で実装してください。
+Implement with white background card, appropriate padding, and responsive design.
 
-【アクセシビリティ要件】
+**Accessibility Requirements**
 
-- カード全体をarticle要素でマークアップ
-- トークン名を見出しとして構造化
-- アクションボタンの明確なaria-label
+- Mark up entire card with article element
+- Structure token name as a heading
+- Clear aria-labels for action buttons
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- React.memoでカード全体をメモ化
-- レート計算をuseMemoで最適化
-- コールバック関数をuseCallbackで最適化
+- Memoize entire card with React.memo
+- Optimize rate calculations with useMemo
+- Optimize callback functions with useCallback
 
-【エラーハンドリング】
+**Error Handling**
 
-- トランザクション失敗時のエラー表示
-- ローディング中のボタン無効化
-- ネットワークエラー時のリトライ機能
+- Error display for transaction failures
+- Button disabling during loading
+- Retry functionality for network errors

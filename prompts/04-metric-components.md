@@ -1,34 +1,34 @@
-メトリック（数値）表示用のコンポーネントを作成してください。
+Please create components for displaying metrics (numerical values).
 
-【前提条件】
+**Prerequisites**
 
-- 02-custom-utilities.md で定義された.text-label、.text-value、.metric-displayクラス
-- 01-tailwind-config.md で定義されたカラーパレット
+- .text-label, .text-value, .metric-display classes defined in 02-custom-utilities.md
+- Color palette defined in 01-tailwind-config.md
 
-【ファイル作成】
+**Files to Create**
 
 - src/components/ui/metric-item.tsx
 - src/components/ui/balance-display.tsx
 
-【MetricItem仕様】
+**MetricItem Specifications**
 Props:
 
-- label: string // "CURRENT BALANCE", "30 DAY PROJECTION"等
-- value?: string | number // 数値
-- suffix?: string // "AO"等の単位
-- isPositive?: boolean // プラス表示用（緑色）
-- isNegative?: boolean // マイナス表示用（赤色）
-- conversionRate?: string // "1 AR = 0.001150 AO"等
-- icon?: React.ReactNode // アイコン表示
+- label: string // "CURRENT BALANCE", "30 DAY PROJECTION", etc.
+- value?: string | number // Numerical value
+- suffix?: string // Units like "AO"
+- isPositive?: boolean // For positive display (green color)
+- isNegative?: boolean // For negative display (red color)
+- conversionRate?: string // "1 AR = 0.001150 AO", etc.
+- icon?: React.ReactNode // Icon display
 
-スタイル:
+Styling:
 
-- label: text-label クラス使用
-- value: text-value クラス使用
-- metric-display クラスでレイアウト
-- +/- 記号の色分け対応
+- label: Use text-label class
+- value: Use text-value class
+- Layout with metric-display class
+- Color coding for +/- symbols
 
-【BalanceDisplay仕様】
+**BalanceDisplay Specifications**
 Props:
 
 - currentBalance?: number
@@ -37,25 +37,25 @@ Props:
 - isConnected: boolean
 - tokenSymbol?: string
 
-未接続時は "+/-" のみ表示
-接続時は実際の数値表示
+Display only "+/-" when disconnected
+Display actual numerical values when connected
 
-TypeScriptで型安全に実装してください。
+Implement with TypeScript for type safety.
 
-【アクセシビリティ要件】
+**Accessibility Requirements**
 
-- スクリーンリーダー用のaria-labelでコンテキスト提供
-- 数値変化時のライブリージョン（aria-live="polite"）
-- 視覚的な色分けだけでなくアイコンやテキストでも状態を伝達
+- Provide context with aria-label for screen readers
+- Live region for numerical changes (aria-live="polite")
+- Convey state through icons and text, not just visual color coding
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- React.memoで不要な再レンダリング防止
-- 大きな数値のフォーマット処理をuseMemoで最適化
-- アニメーション付き数値変化はrequestAnimationFrameで最適化
+- Prevent unnecessary re-renders with React.memo
+- Optimize large number formatting with useMemo
+- Optimize animated numerical changes with requestAnimationFrame
 
-【エラーハンドリング】
+**Error Handling**
 
-- データ取得失敗時の「--」表示
-- ローディング中のスケルトン表示
-- エラー時の再取得ボタン
+- Display "--" when data fetching fails
+- Skeleton display during loading
+- Retry button on errors

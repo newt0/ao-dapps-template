@@ -1,16 +1,16 @@
-セクション表示用のカードコンポーネントを作成してください。
+Please create card components for section display.
 
-【前提条件】
+**Prerequisites**
 
-- 02-custom-utilities.md で定義された.section-card、.section-compactクラス
-- 01-tailwind-config.md で定義されたカラーパレットとスペーシング
+- .section-card, .section-compact classes defined in 02-custom-utilities.md
+- Color palette and spacing defined in 01-tailwind-config.md
 
-【ファイル作成】
+**Files to Create**
 
 - src/components/ui/section-card.tsx
 - src/components/ui/section-compact.tsx
 
-【SectionCard仕様（Network風）】
+**SectionCard Specifications (Network style)**
 Props:
 
 - title: string
@@ -18,13 +18,13 @@ Props:
 - children: React.ReactNode
 - className?: string
 
-スタイル:
+Styling:
 
-- section-card クラス使用
+- Use section-card class
 - title: text-section-title
 - description: text-description
 
-【SectionCompact仕様（Your AO風）】
+**SectionCompact Specifications (Your AO style)**
 Props:
 
 - title: string
@@ -32,29 +32,29 @@ Props:
 - walletButton?: React.ReactNode
 - className?: string
 
-スタイル:
+Styling:
 
-- section-compact クラス使用
+- Use section-compact class
 - title: text-section-title-sm
-- 右上にwalletButtonを配置
+- Position walletButton in top-right
 
-【共通要件】
+**Common Requirements**
 
-- レスポンシブ対応
-- 適切な型定義
-- コンポーネントの合成可能性
-- className prop でスタイル拡張可能
+- Responsive design
+- Proper type definitions
+- Component composability
+- Style extension via className prop
 
-実装してください。
+Please implement.
 
-【アクセシビリティ要件】
+**Accessibility Requirements**
 
-- section、article等のセマンティックHTML要素使用
-- 見出し階層の適切な設定（h2、h3等）
-- role="region"とaria-labelledbyでリージョンを明示
+- Use semantic HTML elements like section, article
+- Proper heading hierarchy (h2, h3, etc.)
+- Explicit regions with role="region" and aria-labelledby
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- React.memoでメモ化
-- 子コンポーネントの再レンダリング防止
-- CSSクラスの動的生成を最小限に
+- Memoization with React.memo
+- Prevent child component re-renders
+- Minimize dynamic CSS class generation

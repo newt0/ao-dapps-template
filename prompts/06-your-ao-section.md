@@ -1,16 +1,16 @@
-「Your AO」セクションの完全なコンポーネントを作成してください。
+Please create a complete component for the "Your AO" section.
 
-【前提条件】
+**Prerequisites**
 
 - src/components/ui/section-compact.tsx (05-card-layouts.md)
 - src/components/ui/wallet-button.tsx (03-button-components.md)
 - src/components/ui/balance-display.tsx (04-metric-components.md)
 
-【ファイル作成】
+**File to Create**
 
 - src/components/sections/your-ao-section.tsx
 
-【仕様】
+**Specifications**
 Props:
 
 - isConnected: boolean
@@ -20,28 +20,28 @@ Props:
 - oneYearProjection?: number
 - onConnectWallet: () => void
 
-【構成】
+**Structure**
 
-1. SectionCompactコンポーネントを使用
-2. タイトル: "Your AO"
-3. WalletButtonを右上に配置
-4. BalanceDisplayで残高情報表示
-5. 未接続時の適切な状態表示
+1. Use SectionCompact component
+2. Title: "Your AO"
+3. Position WalletButton in top-right
+4. Display balance information with BalanceDisplay
+5. Appropriate state display when disconnected
 
-【スタイル】
+**Styling**
 
-- これまで作成したコンポーネントとTailwindクラスを活用
-- レスポンシブ対応
-- ホバー効果やトランジション
+- Utilize previously created components and Tailwind classes
+- Responsive design
+- Hover effects and transitions
 
-状態管理はpropsで受け取る形で実装してください。
+Implement with state management through props.
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- セクション全体をReact.memoでメモ化
-- onConnectWalletコールバックの依存性最小化
+- Memoize entire section with React.memo
+- Minimize onConnectWallet callback dependencies
 
-【エラーハンドリング】
+**Error Handling**
 
-- ウォレット接続失敗時のエラー表示
-- データ取得エラー時のフォールバックUI
+- Error display for wallet connection failures
+- Fallback UI for data fetching errors

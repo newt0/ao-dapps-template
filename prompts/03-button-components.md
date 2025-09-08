@@ -1,57 +1,57 @@
-AO Portal用のボタンコンポーネントを作成してください。
+Please create button components for AO Portal.
 
-【前提条件】
+**Prerequisites**
 
-- 01-tailwind-config.md で定義されたカラーパレット
-- 02-custom-utilities.md で定義されたユーティリティクラス
+- Color palette defined in 01-tailwind-config.md
+- Utility classes defined in 02-custom-utilities.md
 
-【ファイル作成】
+**Files to Create**
 
 - src/components/ui/ao-button.tsx
 - src/components/ui/wallet-button.tsx
 
-【AO Button仕様】
+**AO Button Specifications**
 variant props: "primary" | "secondary"
 
-- primary: 緑色ボタン
+- primary: Green button
   - background: ao-success
   - border: 1px solid ao-success
   - text: white
-  - hover効果あり
+  - hover effects included
 
-- secondary: グレーボタン
+- secondary: Gray button
   - background: ao-gray-100
   - border: 1px solid ao-gray-400
   - text: ao-gray-900
   - hover: background ao-gray-200, border ao-gray-300
-  - transition効果あり
+  - transition effects included
 
-【Wallet Button仕様】
+**Wallet Button Specifications**
 state props: "disconnected" | "connected"
 walletType props: "arweave" | "eth"
 
-- disconnected時: "Connect {walletType} Wallet"
-- connected時: 省略されたウォレットアドレス表示
-- 適切なアイコン表示
-- hover時のtransition効果
+- When disconnected: "Connect {walletType} Wallet"
+- When connected: Display abbreviated wallet address
+- Display appropriate icons
+- Transition effects on hover
 
-TypeScript、shadcn/uiスタイル、forwardRefを使用してください。
+Use TypeScript, shadcn/ui style, and forwardRef.
 
-【アクセシビリティ要件】
+**Accessibility Requirements**
 
-- キーボードナビゲーション対応（Tab、Enter、Space）
-- フォーカス時の視覚的フィードバック
-- aria-label、aria-pressed等の適切な属性
-- disabled状態のスタイリングとaria-disabled
+- Keyboard navigation support (Tab, Enter, Space)
+- Visual feedback on focus
+- Proper attributes like aria-label, aria-pressed
+- Disabled state styling and aria-disabled
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- React.memoでメモ化
-- onClick等のコールバックはuseCallbackで最適化
-- 不要な再レンダリング防止
+- Memoization with React.memo
+- Optimize callbacks like onClick with useCallback
+- Prevent unnecessary re-renders
 
-【エラーハンドリング】
+**Error Handling**
 
-- loading状態の表示（スピナー）
-- エラー時のボタン状態管理
-- 適切なエラーメッセージ表示
+- Loading state display (spinner)
+- Button state management on errors
+- Appropriate error message display

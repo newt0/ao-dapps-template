@@ -1,32 +1,32 @@
 # AO Portal Implementation Prompts
 
-AO Portalのフロントエンド基盤を段階的に実装するためのClaude Codeプロンプト集
+A collection of Claude Code prompts for implementing the AO Portal frontend infrastructure step by step.
 
-## 実行順序
+## Execution Order
 
-### Phase 1: デザイントークン定義
+### Phase 1: Design Token Definition
 
-1. `01-tailwind-config.md` - Tailwind設定の基盤構築
-2. `02-custom-utilities.md` - カスタムUtilityクラスの作成
+1. `01-tailwind-config.md` - Build Tailwind configuration foundation
+2. `02-custom-utilities.md` - Create custom utility classes
 
-### Phase 2: 基本コンポーネント作成
+### Phase 2: Basic Component Creation
 
-3. `03-button-components.md` - ボタンコンポーネントの作成
-4. `04-metric-components.md` - メトリック表示コンポーネント
-5. `05-card-layouts.md` - カードレイアウトコンポーネント
+3. `03-button-components.md` - Create button components
+4. `04-metric-components.md` - Metric display components
+5. `05-card-layouts.md` - Card layout components
 
-### Phase 3: 複合コンポーネント作成
+### Phase 3: Composite Component Creation
 
-6. `06-your-ao-section.md` - Your AOセクションコンポーネント
-7. `07-network-section.md` - Networkセクションコンポーネント
-8. `08-deposit-card.md` - Depositカードコンポーネント
+6. `06-your-ao-section.md` - Your AO section component
+7. `07-network-section.md` - Network section component
+8. `08-deposit-card.md` - Deposit card component
 
-### Phase 4: ページレベル統合
+### Phase 4: Page-Level Integration
 
-9. `09-dashboard-page.md` - メインダッシュボードページ
-10. `10-state-management.md` - 状態管理とデータフェッチング
+9. `09-dashboard-page.md` - Main dashboard page
+10. `10-state-management.md` - State management and data fetching
 
-## 技術スタック
+## Tech Stack
 
 - Next.js App Router
 - TypeScript
@@ -35,14 +35,14 @@ AO Portalのフロントエンド基盤を段階的に実装するためのClaud
 - Zustand
 - TanStack Query
 
-## 実装方針
+## Implementation Guidelines
 
-- **Light Modeのみ実装** - Dark Modeは実装しない
-- **状態管理はZustandを使用** - Context APIは使用しない
-- **TailwindCSSでスタイリング** - CSS Modulesやstyled-componentsは使用しない
-- **TypeScriptで型安全性を確保** - 全コンポーネントで適切な型定義
-- **Shadcn/uiとの互換性維持** - 既存のShadcnコンポーネントを拡張
+- **Light Mode Only** - Dark mode will not be implemented
+- **State Management with Zustand** - Context API will not be used
+- **Styling with TailwindCSS** - CSS Modules and styled-components will not be used
+- **TypeScript for Type Safety** - Proper type definitions for all components
+- **Maintain Shadcn/ui Compatibility** - Extend existing Shadcn components
 
-## 実行方法
+## How to Execute
 
-各mdファイルの内容をClaude Codeで順番に実行してください。
+Execute the contents of each markdown file sequentially using Claude Code.

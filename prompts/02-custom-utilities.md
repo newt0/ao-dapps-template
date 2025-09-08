@@ -1,10 +1,10 @@
-AO Portal用のカスタムTailwind utilityクラスを作成してください。
+Please create custom Tailwind utility classes for AO Portal.
 
-以下のクラスをTailwind設定のpluginとして追加：
+Add the following classes as Tailwind plugins in the configuration:
 
-【レイアウトパターン】
+**Layout Patterns**
 
-- .section-card: 白背景のカードレイアウト（Networkセクション風）
+- .section-card: White background card layout (Network section style)
   - background: white
   - border: 1px solid ao-gray-200
   - display: flex, align-items: center, justify-content: space-between
@@ -12,36 +12,36 @@ AO Portal用のカスタムTailwind utilityクラスを作成してください�
   - padding: ao-section-padding
   - width: 100%
 
-- .section-compact: グレー背景のコンパクトレイアウト（Your AO風）
+- .section-compact: Gray background compact layout (Your AO style)
   - background: ao-gray-50
-  - 適切なpadding
+  - appropriate padding
 
-【テキストスタイル】
+**Text Styles**
 
-- .text-section-title: セクションタイトル用（大）
+- .text-section-title: For section titles (large)
   - font-size: 29px, font-weight: 400, color: ao-gray-900
   - font-family: "DM Sans", sans-serif
-- .text-section-title-sm: セクションタイトル用（小）
+- .text-section-title-sm: For section titles (small)
   - font-size: text-ao-sm, font-weight: 500, color: ao-gray-900, line-height: 1
   - font-family: "DM Sans", sans-serif
 
-- .text-label: ラベル用（CURRENT BALANCE等）
+- .text-label: For labels (CURRENT BALANCE, etc.)
   - font-family: "Roboto Mono", monospace
   - font-weight: 400
   - text-transform: uppercase
   - font-size: text-ao-xs
   - color: ao-gray-600
 
-- .text-description: 説明文用
+- .text-description: For description text
   - font-size: 12px, color: ao-gray-500, font-weight: 400
 
-- .text-value: 数値表示用
+- .text-value: For numeric displays
   - font-size: text-ao-base
 
-【メトリック表示】
+**Metric Display**
 
-- .metric-display: 数値表示のレイアウト
+- .metric-display: Layout for numeric displays
   - display: flex, align-items: center, gap: ao-metric-gap
   - margin: 1.5px 0 0
 
-tailwind.config.tsのplugin設定を追加してください。
+Please add the plugin configuration to tailwind.config.ts.

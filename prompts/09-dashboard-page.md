@@ -1,48 +1,48 @@
-これまで作成したコンポーネントを統合したダッシュボードページを作成してください。
+Please create a dashboard page that integrates all previously created components.
 
-【前提条件】
+**Prerequisites**
 
 - src/components/sections/your-ao-section.tsx (06-your-ao-section.md)
 - src/components/sections/network-section.tsx (07-network-section.md)
 - src/components/cards/deposit-card.tsx (08-deposit-card.md)
 - src/stores/wallet-store.ts (10-state-management.md)
 
-【ファイル作成】
+**Files to Create**
 
 - src/app/dashboard/page.tsx
 - src/components/layout/dashboard-layout.tsx
 
-【構成】
+**Structure**
 
-1. Your AOセクション
-2. Networkセクション
-3. Depositsセクション
-   - "You are currently Receiving yield" + "Manage Delegations"リンク
-   - Arweaveカード
-   - DAIカード（複数対応可能）
+1. Your AO section
+2. Network section
+3. Deposits section
+   - "You are currently Receiving yield" + "Manage Delegations" link
+   - Arweave card
+   - DAI card (multiple cards supported)
 
-【レイアウト】
+**Layout**
 
-- 適切なスペーシング
-- レスポンシブグリッド
-- セクション間の視覚的分離
+- Appropriate spacing
+- Responsive grid
+- Visual separation between sections
 
-【状態管理】
+**State Management**
 
-- ウォレット接続状態
-- 各種バランス情報
-- サンプルデータでの動作確認
+- Wallet connection state
+- Various balance information
+- Operation verification with sample data
 
-Zustandでの状態管理も含めて実装してください。
+Implement including Zustand state management.
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- セクションのlazy loading実装
-- React.Suspenseでローディング状態表示
-- 重いコンポーネントの動的インポート
+- Lazy loading implementation for sections
+- Loading state display with React.Suspense
+- Dynamic imports for heavy components
 
-【エラーハンドリング】
+**Error Handling**
 
-- エラーバウンダリの実装
-- グローバルエラーハンドリング
-- 404ページへのリダイレクト
+- Error boundary implementation
+- Global error handling
+- Redirect to 404 page

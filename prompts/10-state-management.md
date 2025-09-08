@@ -1,18 +1,18 @@
-AO Portal用の状態管理とデータフェッチング層を実装してください。
+Please implement state management and data fetching layers for AO Portal.
 
-【前提条件】
+**Prerequisites**
 
-- 全コンポーネントが作成済み（01-09のプロンプト完了）
-- Next.js App Router環境
+- All components created (prompts 01-09 completed)
+- Next.js App Router environment
 
-【ファイル作成】
+**Files to Create**
 
 - src/stores/wallet-store.ts (Zustand)
 - src/hooks/use-wallet.ts
 - src/hooks/use-network-data.ts
 - src/lib/mock-data.ts
 
-【WalletStore仕様】
+**WalletStore Specifications**
 
 - isConnected: boolean
 - walletAddress?: string
@@ -20,41 +20,41 @@ AO Portal用の状態管理とデータフェッチング層を実装してく�
 - balance?: number
 - connect/disconnect actions
 
-【NetworkStore仕様】
+**NetworkStore Specifications**
 
 - network metrics data
 - deposit data
 - update actions
 
-【Hooks】
+**Hooks**
 
-- TanStack Queryを活用
-- エラーハンドリング
-- ローディング状態
-- 適切な型定義
+- Utilize TanStack Query
+- Error handling
+- Loading states
+- Proper type definitions
 
-【Mock Data】
+**Mock Data**
 
-- 開発用のサンプルデータ
-- 実際のAO Portal風の数値
+- Sample data for development
+- AO Portal-style realistic values
 
-本格的な状態管理システムを構築してください。
+Build a comprehensive state management system.
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- Zustandのdevtools統合
-- 状態の永続化（persist middleware）
-- セレクター最適化で再レンダリング防止
-- TanStack Queryのキャッシュ戦略
+- Zustand devtools integration
+- State persistence (persist middleware)
+- Selector optimization to prevent re-renders
+- TanStack Query cache strategies
 
-【エラーハンドリング】
+**Error Handling**
 
-- APIエラーの統一処理
-- リトライ機能（exponential backoff）
-- エラー通知システム（ToastやAlert）
-- オフラインモード対応
+- Unified API error handling
+- Retry functionality (exponential backoff)
+- Error notification system (Toast or Alert)
+- Offline mode support
 
-【アクセシビリティ要件】
+**Accessibility Requirements**
 
-- ローディング状態のスクリーンリーダー通知
-- エラーメッセージのaria-liveリージョン
+- Screen reader notifications for loading states
+- aria-live regions for error messages

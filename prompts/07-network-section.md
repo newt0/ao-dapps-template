@@ -1,15 +1,15 @@
-「Network」セクションのコンポーネントを作成してください。
+Please create a component for the "Network" section.
 
-【前提条件】
+**Prerequisites**
 
 - src/components/ui/section-card.tsx (05-card-layouts.md)
 - src/components/ui/metric-item.tsx (04-metric-components.md)
 
-【ファイル作成】
+**File to Create**
 
 - src/components/sections/network-section.tsx
 
-【仕様】
+**Specifications**
 Props:
 
 - fairLaunchDeposits: number
@@ -17,31 +17,31 @@ Props:
 - totalDaiBridged: number
 - totalUsdsBridged: number
 
-【構成】
+**Structure**
 
-1. SectionCardコンポーネント使用
-2. タイトル: "Network"
-3. 説明文: "Track overall network token emissions, total deposited assets, and your current and projected AO holdings."
-4. 4つのメトリック表示:
-   - Fair Launch Deposits: $ 形式
-   - Total stETH Bridged: アイコン + 数値
-   - Total DAI Bridged: アイコン + 数値
-   - Total USDS Bridged: アイコン + 数値
+1. Use SectionCard component
+2. Title: "Network"
+3. Description: "Track overall network token emissions, total deposited assets, and your current and projected AO holdings."
+4. Display 4 metrics:
+   - Fair Launch Deposits: $ format
+   - Total stETH Bridged: icon + value
+   - Total DAI Bridged: icon + value
+   - Total USDS Bridged: icon + value
 
-【アイコン】
+**Icons**
 
-- 適切なcrypto/tokenアイコンを表示
-- lucide-reactまたは適切なアイコンライブラリ使用
+- Display appropriate crypto/token icons
+- Use lucide-react or appropriate icon library
 
-数値フォーマット（カンマ区切り等）も適切に処理してください。
+Handle number formatting (comma separation, etc.) appropriately.
 
-【パフォーマンス最適化】
+**Performance Optimization**
 
-- 数値フォーマット処理をuseMemoで最適化
-- アイコンのlazy loading
-- React.memoでコンポーネントメモ化
+- Optimize number formatting with useMemo
+- Lazy loading for icons
+- Component memoization with React.memo
 
-【エラーハンドリング】
+**Error Handling**
 
-- ネットワークデータ取得失敗時のフォールバック
-- ローディング状態の表示
+- Fallback for network data fetching failures
+- Loading state display
