@@ -6,6 +6,8 @@ import { YourAOSection } from '@/components/sections/your-ao-section';
 import { NetworkSection } from '@/components/sections/network-section';
 import { DepositCard } from '@/components/cards/deposit-card';
 import { ExternalLink } from 'lucide-react';
+import { useWallet, useUserBalance } from '@/hooks/use-wallet';
+import { useNetworkData, useAllDeposits, useDepositMutations } from '@/hooks/use-network-data';
 
 // Lazy load components for better performance
 const LazyYourAOSection = React.lazy(() => 
@@ -26,49 +28,6 @@ const LazyDepositCard = React.lazy(() =>
   }))
 );
 
-// Sample data - In real implementation, this would come from Zustand store
-const SAMPLE_DATA = {
-  wallet: {
-    isConnected: true,
-    address: '0x1234...5678'
-  },
-  balances: {
-    currentBalance: 1250.75,
-    thirtyDayProjection: 125.50,
-    oneYearProjection: 1825.25
-  },
-  network: {
-    fairLaunchDeposits: 12450000,
-    totalStethBridged: 8750.25,
-    totalDaiBridged: 15000.75,
-    totalUsdsBridged: 9250.50
-  },
-  deposits: {
-    arweave: {
-      tokenName: 'Arweave',
-      tokenSymbol: 'AR',
-      apy: 4.2,
-      nativeYield: 2.1,
-      amountDeposited: 500.25,
-      thirtyDayProjection: 42.5,
-      oneYearProjection: 520.75,
-      thirtyDayRate: 0.001150,
-      oneYearRate: 0.001380
-    },
-    dai: {
-      tokenName: 'DAI',
-      tokenSymbol: 'DAI',
-      apy: 2.7,
-      nativeYield: 1.5,
-      amountDeposited: 1000.0,
-      thirtyDayProjection: 22.5,
-      oneYearProjection: 270.0,
-      thirtyDayRate: 0.000850,
-      oneYearRate: 0.001020
-    }
-  }
-};
-
 const LoadingSection = ({ className }: { className?: string }) => (
   <div className={`animate-pulse bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
     <div className="h-6 bg-gray-200 rounded mb-4"></div>
@@ -80,47 +39,85 @@ const LoadingSection = ({ className }: { className?: string }) => (
 );
 
 export default function DashboardPage() {
-  // In a real implementation, these would be managed by Zustand
-  const [isWalletConnected, setIsWalletConnected] = React.useState(SAMPLE_DATA.wallet.isConnected);
-  
+  // Use Zustand wallet store and TanStack Query hooks
+  const { isConnected, walletAddress, connectWallet, error } = useWallet();
+  const { data: userBalance, isLoading: balanceLoading, error: balanceError } = useUserBalance();
+  const { data: networkData, isLoading: networkLoading, error: networkError } = useNetworkData();
+  const { data: deposits, isLoading: depositsLoading, error: depositsError } = useAllDeposits();
+  const { handleDeposit, handleSwap } = useDepositMutations();
+
   const handleConnectWallet = React.useCallback(() => {
-    setIsWalletConnected(true);
-    // In real implementation: dispatch wallet connection action
-  }, []);
+    connectWallet('eth');
+  }, [connectWallet]);
 
-  const handleSwap = React.useCallback((tokenSymbol: string) => {
-    console.log(`Swap ${tokenSymbol}`);
-    // In real implementation: dispatch swap action
-  }, []);
+  const handleTokenSwap = React.useCallback(async (tokenSymbol: string) => {
+    try {
+      await handleSwap(tokenSymbol, 'AO', 100); // Example: swap 100 tokens to AO
+    } catch (err) {
+      console.error(`Failed to swap ${tokenSymbol}:`, err);
+    }
+  }, [handleSwap]);
 
-  const handleDeposit = React.useCallback((tokenSymbol: string) => {
-    console.log(`Deposit ${tokenSymbol}`);
-    // In real implementation: dispatch deposit action
-  }, []);
+  const handleTokenDeposit = React.useCallback(async (tokenSymbol: string) => {
+    try {
+      await handleDeposit(tokenSymbol, 100); // Example: deposit 100 tokens
+    } catch (err) {
+      console.error(`Failed to deposit ${tokenSymbol}:`, err);
+    }
+  }, [handleDeposit]);
+
+  // Error states
+  if (error || balanceError || networkError || depositsError) {
+    return (
+      <DashboardLayout>
+        <div className="text-center py-12">
+          <div className="text-red-600 mb-4" role="alert" aria-live="assertive">
+            <h2 className="text-lg font-semibold mb-2">Error Loading Dashboard</h2>
+            <p>{error || balanceError?.message || networkError?.message || depositsError?.message}</p>
+          </div>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Retry
+          </button>
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>
       <div className="space-y-8">
+        {/* Loading indicator with screen reader support */}
+        <div aria-live="polite" className="sr-only">
+          {(balanceLoading || networkLoading || depositsLoading) && 'Loading dashboard data...'}
+        </div>
+
         {/* Your AO Section */}
         <Suspense fallback={<LoadingSection />}>
           <LazyYourAOSection
-            isConnected={isWalletConnected}
-            walletAddress={SAMPLE_DATA.wallet.address}
-            currentBalance={SAMPLE_DATA.balances.currentBalance}
-            thirtyDayProjection={SAMPLE_DATA.balances.thirtyDayProjection}
-            oneYearProjection={SAMPLE_DATA.balances.oneYearProjection}
+            isConnected={isConnected}
+            walletAddress={walletAddress}
+            currentBalance={userBalance?.currentBalance}
+            thirtyDayProjection={userBalance?.thirtyDayProjection}
+            oneYearProjection={userBalance?.oneYearProjection}
             onConnectWallet={handleConnectWallet}
           />
         </Suspense>
 
         {/* Network Section */}
         <Suspense fallback={<LoadingSection />}>
-          <LazyNetworkSection
-            fairLaunchDeposits={SAMPLE_DATA.network.fairLaunchDeposits}
-            totalStethBridged={SAMPLE_DATA.network.totalStethBridged}
-            totalDaiBridged={SAMPLE_DATA.network.totalDaiBridged}
-            totalUsdsBridged={SAMPLE_DATA.network.totalUsdsBridged}
-          />
+          {networkData ? (
+            <LazyNetworkSection
+              fairLaunchDeposits={networkData.fairLaunchDeposits}
+              totalStethBridged={networkData.totalStethBridged}
+              totalDaiBridged={networkData.totalDaiBridged}
+              totalUsdsBridged={networkData.totalUsdsBridged}
+            />
+          ) : (
+            <LoadingSection />
+          )}
         </Suspense>
 
         {/* Deposits Section */}
@@ -138,43 +135,32 @@ export default function DashboardPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Arweave Card */}
-            <Suspense fallback={<LoadingSection />}>
-              <LazyDepositCard
-                tokenName={SAMPLE_DATA.deposits.arweave.tokenName}
-                tokenSymbol={SAMPLE_DATA.deposits.arweave.tokenSymbol}
-                apy={SAMPLE_DATA.deposits.arweave.apy}
-                nativeYield={SAMPLE_DATA.deposits.arweave.nativeYield}
-                amountDeposited={SAMPLE_DATA.deposits.arweave.amountDeposited}
-                thirtyDayProjection={SAMPLE_DATA.deposits.arweave.thirtyDayProjection}
-                oneYearProjection={SAMPLE_DATA.deposits.arweave.oneYearProjection}
-                thirtyDayRate={SAMPLE_DATA.deposits.arweave.thirtyDayRate}
-                oneYearRate={SAMPLE_DATA.deposits.arweave.oneYearRate}
-                isWalletConnected={isWalletConnected}
-                onConnectWallet={handleConnectWallet}
-                onSwap={() => handleSwap('AR')}
-                onDeposit={() => handleDeposit('AR')}
-              />
-            </Suspense>
-
-            {/* DAI Card */}
-            <Suspense fallback={<LoadingSection />}>
-              <LazyDepositCard
-                tokenName={SAMPLE_DATA.deposits.dai.tokenName}
-                tokenSymbol={SAMPLE_DATA.deposits.dai.tokenSymbol}
-                apy={SAMPLE_DATA.deposits.dai.apy}
-                nativeYield={SAMPLE_DATA.deposits.dai.nativeYield}
-                amountDeposited={SAMPLE_DATA.deposits.dai.amountDeposited}
-                thirtyDayProjection={SAMPLE_DATA.deposits.dai.thirtyDayProjection}
-                oneYearProjection={SAMPLE_DATA.deposits.dai.oneYearProjection}
-                thirtyDayRate={SAMPLE_DATA.deposits.dai.thirtyDayRate}
-                oneYearRate={SAMPLE_DATA.deposits.dai.oneYearRate}
-                isWalletConnected={isWalletConnected}
-                onConnectWallet={handleConnectWallet}
-                onSwap={() => handleSwap('DAI')}
-                onDeposit={() => handleDeposit('DAI')}
-              />
-            </Suspense>
+            {deposits && deposits.length > 0 ? (
+              deposits.slice(0, 2).map((deposit) => (
+                <Suspense key={deposit.tokenSymbol} fallback={<LoadingSection />}>
+                  <LazyDepositCard
+                    tokenName={deposit.tokenName}
+                    tokenSymbol={deposit.tokenSymbol}
+                    apy={deposit.apy}
+                    nativeYield={deposit.nativeYield}
+                    amountDeposited={deposit.amountDeposited}
+                    thirtyDayProjection={deposit.thirtyDayProjection}
+                    oneYearProjection={deposit.oneYearProjection}
+                    thirtyDayRate={deposit.thirtyDayRate}
+                    oneYearRate={deposit.oneYearRate}
+                    isWalletConnected={isConnected}
+                    onConnectWallet={handleConnectWallet}
+                    onSwap={() => handleTokenSwap(deposit.tokenSymbol)}
+                    onDeposit={() => handleTokenDeposit(deposit.tokenSymbol)}
+                  />
+                </Suspense>
+              ))
+            ) : (
+              <>
+                <LoadingSection />
+                <LoadingSection />
+              </>
+            )}
           </div>
         </section>
       </div>
