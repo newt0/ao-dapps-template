@@ -1,5 +1,12 @@
 これまで作成したコンポーネントを統合したダッシュボードページを作成してください。
 
+【前提条件】
+
+- src/components/sections/your-ao-section.tsx (06-your-ao-section.md)
+- src/components/sections/network-section.tsx (07-network-section.md)
+- src/components/cards/deposit-card.tsx (08-deposit-card.md)
+- src/stores/wallet-store.ts (10-state-management.md)
+
 【ファイル作成】
 
 - src/app/dashboard/page.tsx
@@ -27,3 +34,15 @@
 - サンプルデータでの動作確認
 
 Zustandでの状態管理も含めて実装してください。
+
+【パフォーマンス最適化】
+
+- セクションのlazy loading実装
+- React.Suspenseでローディング状態表示
+- 重いコンポーネントの動的インポート
+
+【エラーハンドリング】
+
+- エラーバウンダリの実装
+- グローバルエラーハンドリング
+- 404ページへのリダイレクト

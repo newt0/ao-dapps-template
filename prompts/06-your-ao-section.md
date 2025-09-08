@@ -1,5 +1,11 @@
 「Your AO」セクションの完全なコンポーネントを作成してください。
 
+【前提条件】
+
+- src/components/ui/section-compact.tsx (05-card-layouts.md)
+- src/components/ui/wallet-button.tsx (03-button-components.md)
+- src/components/ui/balance-display.tsx (04-metric-components.md)
+
 【ファイル作成】
 
 - src/components/sections/your-ao-section.tsx
@@ -29,3 +35,13 @@ Props:
 - ホバー効果やトランジション
 
 状態管理はpropsで受け取る形で実装してください。
+
+【パフォーマンス最適化】
+
+- セクション全体をReact.memoでメモ化
+- onConnectWalletコールバックの依存性最小化
+
+【エラーハンドリング】
+
+- ウォレット接続失敗時のエラー表示
+- データ取得エラー時のフォールバックUI

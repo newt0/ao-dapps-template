@@ -1,5 +1,11 @@
 Depositカード（DAI等）のコンポーネントを作成してください。
 
+【前提条件】
+
+- src/components/ui/ao-button.tsx (03-button-components.md)
+- src/components/ui/wallet-button.tsx (03-button-components.md)
+- src/components/ui/metric-item.tsx (04-metric-components.md)
+
 【ファイル作成】
 
 - src/components/cards/deposit-card.tsx
@@ -38,3 +44,21 @@ Props:
 - 接続済: "Deposit DAI"等の具体的アクション
 
 白背景のカード、適切なpadding、レスポンシブ対応で実装してください。
+
+【アクセシビリティ要件】
+
+- カード全体をarticle要素でマークアップ
+- トークン名を見出しとして構造化
+- アクションボタンの明確なaria-label
+
+【パフォーマンス最適化】
+
+- React.memoでカード全体をメモ化
+- レート計算をuseMemoで最適化
+- コールバック関数をuseCallbackで最適化
+
+【エラーハンドリング】
+
+- トランザクション失敗時のエラー表示
+- ローディング中のボタン無効化
+- ネットワークエラー時のリトライ機能

@@ -1,5 +1,10 @@
 メトリック（数値）表示用のコンポーネントを作成してください。
 
+【前提条件】
+
+- 02-custom-utilities.md で定義された.text-label、.text-value、.metric-displayクラス
+- 01-tailwind-config.md で定義されたカラーパレット
+
 【ファイル作成】
 
 - src/components/ui/metric-item.tsx
@@ -36,3 +41,21 @@ Props:
 接続時は実際の数値表示
 
 TypeScriptで型安全に実装してください。
+
+【アクセシビリティ要件】
+
+- スクリーンリーダー用のaria-labelでコンテキスト提供
+- 数値変化時のライブリージョン（aria-live="polite"）
+- 視覚的な色分けだけでなくアイコンやテキストでも状態を伝達
+
+【パフォーマンス最適化】
+
+- React.memoで不要な再レンダリング防止
+- 大きな数値のフォーマット処理をuseMemoで最適化
+- アニメーション付き数値変化はrequestAnimationFrameで最適化
+
+【エラーハンドリング】
+
+- データ取得失敗時の「--」表示
+- ローディング中のスケルトン表示
+- エラー時の再取得ボタン

@@ -1,5 +1,10 @@
 AO Portal用のボタンコンポーネントを作成してください。
 
+【前提条件】
+
+- 01-tailwind-config.md で定義されたカラーパレット
+- 02-custom-utilities.md で定義されたユーティリティクラス
+
 【ファイル作成】
 
 - src/components/ui/ao-button.tsx
@@ -31,3 +36,22 @@ walletType props: "arweave" | "eth"
 - hover時のtransition効果
 
 TypeScript、shadcn/uiスタイル、forwardRefを使用してください。
+
+【アクセシビリティ要件】
+
+- キーボードナビゲーション対応（Tab、Enter、Space）
+- フォーカス時の視覚的フィードバック
+- aria-label、aria-pressed等の適切な属性
+- disabled状態のスタイリングとaria-disabled
+
+【パフォーマンス最適化】
+
+- React.memoでメモ化
+- onClick等のコールバックはuseCallbackで最適化
+- 不要な再レンダリング防止
+
+【エラーハンドリング】
+
+- loading状態の表示（スピナー）
+- エラー時のボタン状態管理
+- 適切なエラーメッセージ表示

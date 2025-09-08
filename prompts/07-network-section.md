@@ -1,5 +1,10 @@
 「Network」セクションのコンポーネントを作成してください。
 
+【前提条件】
+
+- src/components/ui/section-card.tsx (05-card-layouts.md)
+- src/components/ui/metric-item.tsx (04-metric-components.md)
+
 【ファイル作成】
 
 - src/components/sections/network-section.tsx
@@ -29,3 +34,14 @@ Props:
 - lucide-reactまたは適切なアイコンライブラリ使用
 
 数値フォーマット（カンマ区切り等）も適切に処理してください。
+
+【パフォーマンス最適化】
+
+- 数値フォーマット処理をuseMemoで最適化
+- アイコンのlazy loading
+- React.memoでコンポーネントメモ化
+
+【エラーハンドリング】
+
+- ネットワークデータ取得失敗時のフォールバック
+- ローディング状態の表示
