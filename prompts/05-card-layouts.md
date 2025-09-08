@@ -7,8 +7,8 @@ Please create card components for section display.
 
 **Files to Create**
 
-- src/components/ui/section-card.tsx
-- src/components/ui/section-compact.tsx
+- src/components/shared/section-card.tsx
+- src/components/shared/section-compact.tsx
 
 **SectionCard Specifications (Network style)**
 Props:

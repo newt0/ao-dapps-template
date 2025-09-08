@@ -2,9 +2,9 @@ Please create a deposit card component (for DAI, etc.).
 
 **Prerequisites**
 
-- src/components/ui/ao-button.tsx (03-button-components.md)
-- src/components/ui/wallet-button.tsx (03-button-components.md)
-- src/components/ui/metric-item.tsx (04-metric-components.md)
+- src/components/shared/ao-button.tsx (03-button-components.md)
+- src/components/shared/wallet-button.tsx (03-button-components.md)
+- src/components/shared/metric-item.tsx (04-metric-components.md)
 
 **File to Create**
 

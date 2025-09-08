@@ -2,8 +2,8 @@ Please create a component for the "Network" section.
 
 **Prerequisites**
 
-- src/components/ui/section-card.tsx (05-card-layouts.md)
-- src/components/ui/metric-item.tsx (04-metric-components.md)
+- src/components/shared/section-card.tsx (05-card-layouts.md)
+- src/components/shared/metric-item.tsx (04-metric-components.md)
 
 **File to Create**
 

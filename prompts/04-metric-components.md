@@ -7,8 +7,8 @@ Please create components for displaying metrics (numerical values).
 
 **Files to Create**
 
-- src/components/ui/metric-item.tsx
-- src/components/ui/balance-display.tsx
+- src/components/shared/metric-item.tsx
+- src/components/shared/balance-display.tsx
 
 **MetricItem Specifications**
 Props:

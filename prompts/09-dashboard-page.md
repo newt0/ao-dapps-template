@@ -5,7 +5,7 @@ Please create a dashboard page that integrates all previously created components
 - src/components/sections/your-ao-section.tsx (06-your-ao-section.md)
 - src/components/sections/network-section.tsx (07-network-section.md)
 - src/components/cards/deposit-card.tsx (08-deposit-card.md)
-- src/stores/wallet-store.ts (10-state-management.md)
+- src/lib/stores/wallet-store.ts (10-state-management.md)
 
 **Files to Create**
 

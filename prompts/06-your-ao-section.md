@@ -2,9 +2,9 @@ Please create a complete component for the "Your AO" section.
 
 **Prerequisites**
 
-- src/components/ui/section-compact.tsx (05-card-layouts.md)
-- src/components/ui/wallet-button.tsx (03-button-components.md)
-- src/components/ui/balance-display.tsx (04-metric-components.md)
+- src/components/shared/section-compact.tsx (05-card-layouts.md)
+- src/components/shared/wallet-button.tsx (03-button-components.md)
+- src/components/shared/balance-display.tsx (04-metric-components.md)
 
 **File to Create**
 

@@ -7,7 +7,7 @@ Please implement state management and data fetching layers for AO Portal.
 
 **Files to Create**
 
-- src/stores/wallet-store.ts (Zustand)
+- src/lib/stores/wallet-store.ts (Zustand)
 - src/hooks/use-wallet.ts
 - src/hooks/use-network-data.ts
 - src/lib/mock-data.ts
